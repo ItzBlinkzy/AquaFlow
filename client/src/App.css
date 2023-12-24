@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.shape-divider {
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  height: 100%;
+  top: 0;
+  left: 49%;
+}
+
+.shape-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100%;
+}
+
+@keyframes line {
+  from {
+    left: 0%;
+    width: 0%;
+  }
+  to {
+    left: 5%;
+    width: 100%;
+  }
+}
+
+.animate-line {
+  animation: line 0.5s linear forwards;
+}
+
+#root {
+  height: 100vh;
+}
