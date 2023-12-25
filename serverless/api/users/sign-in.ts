@@ -7,6 +7,12 @@ import cookie from "cookie";
 import path from "path";
 
 export default async function SignIn(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== "POST") {
+    res
+      .status(405)
+      .json({ status: res.statusCode, message: "Method not allowed." });
+    return;
+  }
   await dbConnect();
   const email = req.body?.email;
   const password = req.body?.password;
@@ -44,6 +50,8 @@ export default async function SignIn(req: VercelRequest, res: VercelResponse) {
     const token = generateJWT(user);
     const serializedCookie = cookie.serialize("jwtToken", token, {
       httpOnly: true,
+      sameSite: "None",
+      secure: true,
       path: "/",
     });
 

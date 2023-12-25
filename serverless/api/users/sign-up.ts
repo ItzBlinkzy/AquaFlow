@@ -5,6 +5,12 @@ const bcrypt = require("bcrypt");
 
 export default async function SignUp(req: VercelRequest, res: VercelResponse) {
   try {
+    if (req.method !== "POST") {
+      res
+        .status(405)
+        .json({ status: res.statusCode, message: "Method not allowed." });
+      return;
+    }
     await dbConnect();
     const firstName = req.body?.firstName;
     const lastName = req.body?.lastName;

@@ -6,6 +6,8 @@ export default async function clearJwtToken(req, res) {
     expires: new Date(0),
     httpOnly: true,
     path: "/",
+    sameSite: "None", 
+    secure: true,
   };
 
   const clearCookieHeader = cookie.serialize(

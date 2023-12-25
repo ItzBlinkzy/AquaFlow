@@ -6,6 +6,12 @@ export default async function authenticate(
   res: VercelResponse
 ) {
   try {
+    if (req.method !== "GET") {
+      res
+        .status(405)
+        .json({ status: res.statusCode, message: "Method not allowed." });
+      return;
+    }
     const user = await authenticateToken(req, res);
 
     if (!user?.email) {
