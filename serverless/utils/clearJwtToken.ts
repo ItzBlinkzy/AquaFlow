@@ -6,7 +6,8 @@ export default async function clearJwtToken(req, res) {
     expires: new Date(0),
     httpOnly: true,
     path: "/",
-    sameSite: "None", 
+    sameSite: "None",
+    domain: ".blinkzy.dev", // Set to your domain
     secure: true,
   };
 
