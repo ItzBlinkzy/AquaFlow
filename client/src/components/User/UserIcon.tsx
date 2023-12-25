@@ -2,7 +2,9 @@ import { useStoreState, State, useStoreActions, Actions } from "easy-peasy";
 import { StoreModel } from "../../types";
 const UserIcon = () => {
   const user = useStoreState((state: State<StoreModel>) => state.user);
-  const userInitials = `${user!.firstName[0]}${user!.lastName[0]}`;
+  const userInitials = `${user!.firstName[0]}${
+    user!.lastName[0]
+  }`.toUpperCase();
   const profileModal = useStoreState(
     (state: State<StoreModel>) => state.profileModal,
   );

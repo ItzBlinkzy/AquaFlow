@@ -19,7 +19,10 @@ const DeleteModal = ({
     event.preventDefault();
 
     try {
-      const { data } = await axios.delete(`/api/bookings/delete/${bookingId}`, {
+      // Has to be a get request due to this error I'm encountering with vercel and axios.
+      // RequestContentLengthMismatchError: Request body length does not match content-length header
+      
+      const { data } = await axios.get(`/api/bookings/delete/${bookingId}`, {
         withCredentials: true,
       });
       console.log(data);

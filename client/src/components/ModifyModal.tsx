@@ -38,7 +38,7 @@ const ModifyModal = ({ showModifyModal, bookingData }: ModalProps) => {
   const modifyBooking = async () => {
     console.log("Modifying booking is running.");
     const response = await axios.post(
-      `/bookings/update/${bookingData.bookingId}`,
+      `/api/bookings/update/${bookingData.bookingId}`,
       submitData,
       { withCredentials: true },
     );
@@ -127,13 +127,19 @@ const ModifyModal = ({ showModifyModal, bookingData }: ModalProps) => {
                   name="workshopType"
                   className="primary-500 dark:primary-500 block w-full rounded-lg border border-slate-300 bg-white p-2.5 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                   onChange={handleOptionChange}
-                  // defaultValue={bookingData.workshopType}
                 >
-                  <option>{bookingData.workshopType}</option>
-                  <option value="Beginner">Beginner</option>
-                  <option value="Intermediate">Intermediate</option>
-                  <option value="Advanced">Advanced</option>
-                  <option value="Water Polo">Water Polo</option>
+                  {["Beginner", "Intermediate", "Advanced", "Water Polo"].map(
+                    (wShop) => {
+                      if (bookingData.workshopType !== wShop) {
+                        return <option value={wShop}>{wShop}</option>;
+                      }
+                      return (
+                        <option value={wShop} disabled>
+                          {wShop}
+                        </option>
+                      );
+                    },
+                  )}
                 </select>
               </div>
             </div>
