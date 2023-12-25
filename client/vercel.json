@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://swimapi.blinkzy.dev/:1"
+      "source": "/api/:path*",
+      "destination": "https://swimapi.blinkzy.dev/:path*"
     }
   ]
 }
