@@ -2,8 +2,10 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import dbConnect from "../../dbConnect";
 import User from "../../models/user";
 const bcrypt = require("bcrypt");
-import { generateJWT } from "../../../backend/middlewares/genToken";
+import generateJWT from "../_middlewares/genToken";
 import cookie from "cookie";
+import path from "path";
+
 export default async function SignIn(req: VercelRequest, res: VercelResponse) {
   await dbConnect();
   const email = req.body?.email;
@@ -42,6 +44,7 @@ export default async function SignIn(req: VercelRequest, res: VercelResponse) {
     const token = generateJWT(user);
     const serializedCookie = cookie.serialize("jwtToken", token, {
       httpOnly: true,
+      path: "/",
     });
 
     res.setHeader("Set-Cookie", serializedCookie);

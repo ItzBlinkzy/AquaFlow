@@ -8,7 +8,7 @@ export default async function authenticate(
   try {
     const user = await authenticateToken(req, res);
 
-    if (!user) {
+    if (!user?.email) {
       return;
     }
     res.status(200).json({
