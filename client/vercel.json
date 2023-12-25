@@ -3,6 +3,7 @@
     {
       "source": "/api/(.*)",
       "destination": "https://swimapi.blinkzy.dev/api/$1"
-    }
+    },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
