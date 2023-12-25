@@ -1,8 +1,9 @@
 {
+  "version": 2,
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://swimapi.blinkzy.dev/:path*"
+      "source": "/api/(.*)",
+      "destination": "https://swimapi.blinkzy.dev/$1"
     }
   ]
 }
