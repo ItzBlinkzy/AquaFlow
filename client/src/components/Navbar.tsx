@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <SetCurrentUser />
-      <nav className="w-full dark:bg-gray-900">
+      <nav className="w-ful">
         <div className="mx-auto flex flex-wrap items-center justify-between bg-white p-4">
           <a href="/" className="flex items-center">
             <img
@@ -57,7 +57,7 @@ const Navbar = () => {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="mr-2 mt-4 flex flex-col items-center rounded-lg border border-gray-100 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 md:dark:bg-gray-900">
+            <ul className="mr-2 mt-4 flex flex-col items-center rounded-lg border border-gray-100 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0">
               <li>
                 <NavLink
                   to="/"
